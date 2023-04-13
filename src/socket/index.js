@@ -24,4 +24,12 @@ export const newConnectionHandler = (socket) => {
 
     socket.broadcast.emit("updateOnlineUsersList", onlineUsers);
   });
+
+  socket.on("typing", ({ username }) => {
+    socket.broadcast.emit("typing", { username });
+  });
+
+  socket.on("stoppedTyping", () => {
+    socket.broadcast.emit("stoppedTyping");
+  });
 };
